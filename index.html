@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bitora – College Projects & Mini Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050816;
+        --bg-soft: #0b1020;
+        --bg-soft-2: #0f172a;
+        --card: #0b1020;
+        --accent: #d4a373;
+        --accent-soft: rgba(212, 163, 115, 0.2);
+        --text: #f9fafb;
+        --muted: #9ca3af;
+        --border: #111827;
+        --radius-lg: 1.5rem;
+        --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+        --section-padding: 4rem;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Layout */
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 8, 22, 0.9),
+          rgba(5, 8, 22, 0.6),
+          transparent
+        );
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+      }
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        gap: 1.5rem;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .logo-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: 1px solid var(--accent-soft);
+        background: radial-gradient(circle at 30% 20%, #fbbf24, #b45309 40%, #020617);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+      .logo-text-main {
+        font-family: "Playfair Display", serif;
+        letter-spacing: 0.22em;
+        font-size: 1.1rem;
+      }
+      .logo-sub {
+        font-size: 0.7rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.25rem;
+        font-size: 0.9rem;
+      }
+      .nav-link-btn {
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.18s ease;
+        background: transparent;
+      }
+      .nav-link-btn:hover {
+        color: var(--text);
+        border-color: rgba(55, 65, 81, 0.9);
+        background: rgba(15, 23, 42, 0.8);
+      }
+      .nav-link-btn.primary {
+        border-color: rgba(212, 163, 115, 0.4);
+        background: linear-gradient(
+          135deg,
+          rgba(212, 163, 115, 0.1),
+          rgba(55, 65, 81, 0.2)
+        );
+        color: var(--text);
+      }
+      .nav-link-btn.primary:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(212, 163, 115, 0.25),
+          rgba(15, 23, 42, 0.9)
+        );
+      }
+      .nav-menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      /* Hero */
+      .hero {
+        padding: calc(var(--section-padding) + 1rem) 0 var(--section-padding);
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .hero-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.4rem, 4vw, 3rem);
+        line-height: 1.15;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+      }
+      .hero-highlight {
+        color: var(--accent);
+      }
+      .hero-subtitle {
+        max-width: 28rem;
+        font-size: 0.98rem;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.4rem;
+      }
+      .pill {
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid rgba(55, 65, 81, 0.7);
+        font-size: 0.75rem;
+        color: var(--muted);
+        background: rgba(15, 23, 42, 0.9);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin-bottom: 1.2rem;
+      }
+      .btn-main {
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 163, 115, 0.6);
+        background: radial-gradient(circle at 10% 0, #facc15, #b45309 35%, #020617);
+        color: #111827;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+      }
+      .btn-main:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.02);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
+      }
+      .btn-ghost {
+        padding: 0.65rem 1.1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(55, 65, 81, 0.8);
+        background: rgba(15, 23, 42, 0.95);
+        color: var(--text);
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .btn-ghost:hover {
+        border-color: rgba(148, 163, 184, 1);
+      }
+      .hero-note {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .hero-card {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+      .hero-media {
+        position: relative;
+        padding: 0.8rem;
+      }
+      .poster-wrapper {
+        border-radius: 1.2rem;
+        overflow: hidden;
+        border: 1px solid rgba(51, 65, 85, 0.9);
+        background: #020617;
+      }
+      .poster {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .hero-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+      }
+      .hero-chip {
+        padding: 0.4rem 0.65rem;
+        border-radius: 999px;
+        border: 1px solid rgba(75, 85, 99, 0.9);
+        background: rgba(15, 23, 42, 0.9);
+        color: var(--muted);
+      }
+      .hero-chip strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* Sections */
+      section {
+        padding: var(--section-padding) 0;
+        border-top: 1px solid rgba(15, 23, 42, 0.9);
+      }
+      .section-header {
+        margin-bottom: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .section-kicker {
+        font-size: 0.75rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .section-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .section-title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .section-subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+        max-width: 28rem;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+      .card {
+        border-radius: 1.1rem;
+        border: 1px solid rgba(31, 41, 55, 0.9);
+        background: radial-gradient(circle at top left, #111827 0, #020617 40%, #020617);
+        padding: 1.2rem 1.3rem;
+      }
+      .card-tag {
+        font-size: 0.76rem;
+        font-weight: 500;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 1);
+        border: 1px solid rgba(55, 65, 81, 1);
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-bottom: 0.7rem;
+      }
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+      .card-text {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.5;
+        margin-bottom: 0.6rem;
+      }
+      .card-list {
+        list-style: none;
+        font-size: 0.84rem;
+        color: var(--muted);
+        display: grid;
+        gap: 0.25rem;
+      }
+      .card-list li::before {
+        content: "• ";
+        color: var(--accent);
+      }
+
+      /* Process */
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+      .step-num {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+        background: rgba(15, 23, 42, 1);
+        color: var(--muted);
+      }
+
+      /* Contact / CTA */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+        gap: 1.5rem;
+      }
+      .contact-list {
+        list-style: none;
+        display: grid;
+        gap: 0.7rem;
+        margin-top: 0.6rem;
+        font-size: 0.9rem;
+      }
+      .contact-item-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+        margin-bottom: 0.1rem;
+      }
+      .contact-val {
+        font-size: 0.95rem;
+      }
+      .contact-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.7rem;
+      }
+      .contact-chip {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        border: 1px dashed rgba(75, 85, 99, 0.9);
+        color: var(--muted);
+      }
+
+      .mini-form-card {
+        border-radius: 1.1rem;
+        border: 1px solid rgba(55, 65, 81, 0.9);
+        background: radial-gradient(
+          circle at top left,
+          rgba(212, 163, 115, 0.16),
+          #020617 55%
+        );
+        padding: 1.1rem 1.2rem;
+      }
+      .mini-form-title {
+        font-size: 0.96rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .mini-form-text {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+      .mini-input-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+      .mini-input {
+        flex: 1 1 120px;
+        min-width: 0;
+        padding: 0.5rem 0.7rem;
+        background: rgba(15, 23, 42, 1);
+        border-radius: 0.6rem;
+        border: 1px solid rgba(55, 65, 81, 1);
+        color: var(--text);
+        font-size: 0.85rem;
+      }
+      .mini-input::placeholder {
+        color: rgba(148, 163, 184, 0.9);
+      }
+      .mini-select {
+        padding-right: 1.4rem;
+      }
+
+      /* Footer */
+      .footer {
+        border-top: 1px solid rgba(15, 23, 42, 0.9);
+        padding: 1.1rem 0 1.4rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+      .socials {
+        display: flex;
+        gap: 0.6rem;
+      }
+      .social-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border: 1px solid rgba(55, 65, 81, 0.9);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 42, 1);
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+      .social-btn:hover {
+        border-color: rgba(212, 163, 115, 0.5);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .hero {
+          padding-top: 4.2rem;
+        }
+        .services-grid,
+        .process-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .contact-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      @media (max-width: 720px) {
+        .nav-links {
+          display: none;
+        }
+        .nav-links.mobile-open {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          padding: 0.5rem 1.3rem 0.9rem;
+          background: rgba(15, 23, 42, 0.98);
+          border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+        }
+        .nav-link-btn {
+          width: 100%;
+          justify-content: flex-start;
+        }
+        .nav-menu-toggle {
+          display: inline-flex;
+        }
+        .services-grid,
+        .process-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        section,
+        .hero {
+          padding: 3rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React from CDN -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function scrollToId(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
+      const GOOGLE_FORM_URL =
+        "https://docs.google.com/forms/d/e/1FAIpQLSeaS9aivDlLuCiQFNu3D5boVsOLclSQJVxnWe2Ir-MM4n8RSQ/viewform";
+
+      function Navbar() {
+        const [open, setOpen] = useState(false);
+        const handleNavClick = (id) => {
+          scrollToId(id);
+          setOpen(false);
+        };
+        return (
+          <header className="navbar">
+            <div className="container navbar-inner">
+              <div className="logo">
+                <div className="logo-mark">B</div>
+                <div>
+                  <div className="logo-text-main">BITORA</div>
+                  <div className="logo-sub">Projects &amp; Solutions</div>
+                </div>
+              </div>
+              <nav>
+                <button
+                  className="nav-menu-toggle"
+                  onClick={() => setOpen((v) => !v)}
+                  aria-label="Toggle menu"
+                >
+                  {open ? "✕" : "☰"}
+                </button>
+                <div
+                  className={
+                    "nav-links" + (open ? " mobile-open" : "")
+                  }
+                >
+                  <button
+                    className="nav-link-btn"
+                    onClick={() => handleNavClick("services")}
+                  >
+                    Services
+                  </button>
+                  <button
+                    className="nav-link-btn"
+                    onClick={() => handleNavClick("process")}
+                  >
+                    How it works
+                  </button>
+                  <button
+                    className="nav-link-btn"
+                    onClick={() => handleNavClick("contact")}
+                  >
+                    Contact
+                  </button>
+                  <a
+                    className="nav-link-btn primary"
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Request a project
+                  </a>
+                </div>
+              </nav>
+            </div>
+          </header>
+        );
+      }
+
+      function Hero() {
+        return (
+          <section className="hero" id="home">
+            <div className="container hero-grid">
+              <div>
+                <div className="hero-kicker">Kumbakonam • Tamil Nadu</div>
+                <h1 className="hero-title">
+                  Electronics &amp; Software
+                  <br />
+                  <span className="hero-highlight">
+                    Projects for College Students
+                  </span>
+                </h1>
+                <p className="hero-subtitle">
+                  Bitora helps college students build{" "}
+                  <strong>Final Year</strong> and{" "}
+                  <strong>Mini Projects</strong> with complete{" "}
+                  <strong>electronic hardware</strong> and{" "}
+                  <strong>software</strong> support — from idea to demo.
+                </p>
+                <div className="hero-pills">
+                  <span className="pill">Final Year &amp; Mini Projects</span>
+                  <span className="pill">Electronics + Coding</span>
+                  <span className="pill">Custom ideas on request</span>
+                </div>
+                <div className="hero-actions">
+                  <a
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-main"
+                  >
+                    Fill Project Requirement
+                    <span>↗</span>
+                  </a>
+                  <a href="tel:+919486621103" className="btn-ghost">
+                    Call / WhatsApp: 94866&nbsp;21103
+                  </a>
+                </div>
+                <p className="hero-note">
+                  Tell us your department &amp; budget. We suggest ideas based on
+                  your requirements and recruitment trends.
+                </p>
+              </div>
+
+              <aside className="hero-card" aria-label="Bitora services preview">
+                <div className="hero-media">
+                  <div className="poster-wrapper">
+                    {/* Put your card/poster image in same folder and name it bitora-poster.png */}
+                    <img
+                      src="bitora.png"
+                      alt="Bitora services poster"
+                      className="poster"
+                    />
+                  </div>
+                  <div className="hero-chip-row">
+                    <div className="hero-chip">
+                      ✅ <strong>College Projects</strong> ready to present
+                    </div>
+                    <div className="hero-chip">
+                      🔧 <strong>Hardware + Software</strong> support
+                    </div>
+                    <div className="hero-chip">
+                      💵 Price range from <strong>Low → High</strong>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </section>
+        );
+      }
+
+      function Services() {
+        return (
+          <section id="services">
+            <div className="container">
+              <div className="section-header">
+                <div className="section-kicker">What we do</div>
+                <div className="section-title-row">
+                  <h2 className="section-title">Services</h2>
+                  <p className="section-subtitle">
+                    We focus on <strong>practical project solutions</strong> for
+                    engineering and computer science students — ready to demo at
+                    college and interviews.
+                  </p>
+                </div>
+              </div>
+              <div className="services-grid">
+                <article className="card">
+                  <div className="card-tag">🎓 For College Students</div>
+                  <h3 className="card-title">Final Year Projects</h3>
+                  <p className="card-text">
+                    Complete, end-to-end project support from idea selection to
+                    final presentation.
+                  </p>
+                  <ul className="card-list">
+                    <li>Electronics, Embedded, IoT, Automation</li>
+                    <li>Web &amp; app development projects</li>
+                    <li>Report, block diagram &amp; explanation</li>
+                  </ul>
+                </article>
+
+                <article className="card">
+                  <div className="card-tag">🛠 Hardware + Software</div>
+                  <h3 className="card-title">Mini &amp; Custom Projects</h3>
+                  <p className="card-text">
+                    Short-term or mini projects for labs, internal assessment or
+                    portfolio building.
+                  </p>
+                  <ul className="card-list">
+                    <li>Arduino, NodeMCU, Raspberry Pi etc.</li>
+                    <li>Sensor integration &amp; real-time data</li>
+                    <li>Simple, easy-to-explain concepts</li>
+                  </ul>
+                </article>
+
+                <article className="card">
+                  <div className="card-tag">💰 Fits your budget</div>
+                  <h3 className="card-title">Flexible Pricing</h3>
+                  <p className="card-text">
+                    We suggest project options in{" "}
+                    <strong>multiple price ranges</strong>, based on your
+                    requirement.
+                  </p>
+                  <ul className="card-list">
+                    <li>Range from basic to advanced</li>
+                    <li>Cost based on components &amp; complexity</li>
+                    <li>Focus on value for placements</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Process() {
+        return (
+          <section id="process">
+            <div className="container">
+              <div className="section-header">
+                <div className="section-kicker">How it works</div>
+                <div className="section-title-row">
+                  <h2 className="section-title">From idea to demo</h2>
+                  <p className="section-subtitle">
+                    Simple 3-step flow. Share your needs once, we handle the
+                    technical headache for you.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-grid">
+                <article className="card">
+                  <div className="step-num">1</div>
+                  <h3 className="card-title">Share Requirement</h3>
+                  <p className="card-text">
+                    Fill the Google Form with department, domain, budget and
+                    last date.
+                  </p>
+                  <ul className="card-list">
+                    <li>Your year / branch</li>
+                    <li>Any idea you already have</li>
+                    <li>Budget range and deadline</li>
+                  </ul>
+                </article>
+
+                <article className="card">
+                  <div className="step-num">2</div>
+                  <h3 className="card-title">We Suggest Projects</h3>
+                  <p className="card-text">
+                    We come back with suitable project ideas — including
+                    hardware and software options.
+                  </p>
+                  <ul className="card-list">
+                    <li>Options in different price levels</li>
+                    <li>Explained in simple language</li>
+                    <li>Short call or WhatsApp discussion</li>
+                  </ul>
+                </article>
+
+                <article className="card">
+                  <div className="step-num">3</div>
+                  <h3 className="card-title">Build &amp; Deliver</h3>
+                  <p className="card-text">
+                    Once confirmed, we build, test and handover the project with
+                    proper explanation.
+                  </p>
+                  <ul className="card-list">
+                    <li>Hardware setup &amp; code</li>
+                    <li>Demo guidance and basic report</li>
+                    <li>Post-delivery help for doubts</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function ContactSection() {
+        const [name, setName] = useState("");
+        const [dept, setDept] = useState("");
+        const [year, setYear] = useState("");
+        const [idea, setIdea] = useState("");
+
+        const handleWhatsApp = (e) => {
+          e.preventDefault();
+          const base = "https://wa.me/919486621103";
+          const msg = `Hi Bitora,%0A%0AI am ${name || "a student"}.%0ADept/Year: ${
+            dept || "-"
+          } ${year || ""}%0AIdea / Need:%0A${idea || "-"}%0A%0AFrom website.`;
+          window.open(`${base}?text=${msg}`, "_blank");
+        };
+
+        return (
+          <section id="contact">
+            <div className="container">
+              <div className="section-header">
+                <div className="section-kicker">Contact</div>
+                <div className="section-title-row">
+                  <h2 className="section-title">Get in touch</h2>
+                  <p className="section-subtitle">
+                    Reach out on phone, WhatsApp or e-mail. Or directly submit
+                    your requirement through the Google Form.
+                  </p>
+                </div>
+              </div>
+              <div className="contact-grid">
+                <div className="card">
+                  <h3 className="card-title">Bitora – Project Support</h3>
+                  <p className="card-text">
+                    Based in <strong>Kumbakonam</strong>. Supporting college
+                    students with electronics and software projects.
+                  </p>
+                  <ul className="contact-list">
+                    <li>
+                      <div className="contact-item-label">Phone / WhatsApp</div>
+                      <div className="contact-val">
+                        <a href="tel:+919486621103">+91 94866 21103</a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="contact-item-label">Email</div>
+                      <div className="contact-val">
+                        <a href="mailto:bitorapvt@gmail.com">
+                          bitorapvt@gmail.com
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="contact-item-label">Instagram</div>
+                      <div className="contact-val">
+                        <a
+                          href="https://www.instagram.com/bitorapvt/"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          @bitorapvt
+                        </a>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="contact-item-label">X (Twitter)</div>
+                      <div className="contact-val">
+                        <a
+                          href="https://x.com/bitorapvt/header_photo"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          x.com/bitorapvt
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                  <div className="contact-chip-row">
+                    <span className="contact-chip">Electronics &amp; Hardware</span>
+                    <span className="contact-chip">Software Projects</span>
+                    <span className="contact-chip">
+                      Final year &amp; mini projects
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mini-form-card">
+                  <h3 className="mini-form-title">Quick WhatsApp intro</h3>
+                  <p className="mini-form-text">
+                    Fill these small details and tap{" "}
+                    <strong>&quot;Send on WhatsApp&quot;</strong>. We’ll reply
+                    with suitable project ideas.
+                  </p>
+                  <form onSubmit={handleWhatsApp}>
+                    <div className="mini-input-row">
+                      <input
+                        className="mini-input"
+                        placeholder="Your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <input
+                        className="mini-input"
+                        placeholder="Dept (e.g. ECE / CSE)"
+                        value={dept}
+                        onChange={(e) => setDept(e.target.value)}
+                      />
+                      <input
+                        className="mini-input mini-select"
+                        placeholder="Year (III / IV)"
+                        value={year}
+                        onChange={(e) => setYear(e.target.value)}
+                      />
+                    </div>
+                    <textarea
+                      className="mini-input"
+                      rows="3"
+                      style={{ resize: "vertical" }}
+                      placeholder="Any idea / domain you are interested in (IoT, web, embedded, AI, etc.)"
+                      value={idea}
+                      onChange={(e) => setIdea(e.target.value)}
+                    ></textarea>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "0.6rem",
+                        marginTop: "0.7rem",
+                        alignItems: "center",
+                      }}
+                    >
+                      <button type="submit" className="btn-main">
+                        Send on WhatsApp
+                      </button>
+                      <a
+                        className="btn-ghost"
+                        href={GOOGLE_FORM_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open full Google Form ↗
+                      </a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Footer() {
+        return (
+          <footer className="footer">
+            <div className="container footer-inner">
+              <div>
+                © {new Date().getFullYear()} Bitora. All rights reserved.
+              </div>
+              <div className="socials">
+                <a
+                  className="social-btn"
+                  href="https://www.instagram.com/bitorapvt/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Bitora on Instagram"
+                >
+                  𝕀
+                </a>
+                <a
+                  className="social-btn"
+                  href="https://x.com/bitorapvt/header_photo"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Bitora on X"
+                >
+                  X
+                </a>
+                <a
+                  className="social-btn"
+                  href="mailto:bitorapvt@gmail.com"
+                  aria-label="Email Bitora"
+                >
+                  ✉
+                </a>
+              </div>
+            </div>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <div className="page">
+            <Navbar />
+            <main>
+              <Hero />
+              <Services />
+              <Process />
+              <ContactSection />
+            </main>
+            <Footer />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
